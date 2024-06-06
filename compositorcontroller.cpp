@@ -1614,7 +1614,6 @@ namespace RdkShell
             std::cout << "rendering deleted compositor " << compositorName << std::endl;
             reverseIterator->compositor->draw(needsHolePunch, rect);
         }
-        gDeletedCompositors.clear();
 
         for (auto reverseIterator = gCompositorList.rbegin(); reverseIterator != gCompositorList.rend(); reverseIterator++)
         {
@@ -1770,6 +1769,7 @@ namespace RdkShell
 
     bool CompositorController::update()
     {
+        gDeletedCompositors.clear();
         resolveWaitingEasterEggs();
         RdkShell::Animator::instance()->animate();
         updateKeyRepeat();
