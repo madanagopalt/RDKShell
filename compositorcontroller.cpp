@@ -115,7 +115,7 @@ namespace RdkShell
     CompositorList gTopmostCompositorList;
     CompositorInfo gFocusedCompositor;
     std::vector<std::shared_ptr<RdkCompositor>> gPendingKeyUpListeners;
-    CompositorList gDeletedCompositors;
+    //CompositorList gDeletedCompositors;
 
     static std::map<uint32_t, std::vector<KeyInterceptInfo>> gKeyInterceptInfoMap;
 
@@ -766,7 +766,7 @@ namespace RdkShell
             it->keyListenerInfo.clear();
             it->eventListeners.clear();
             std::cout << "adding " << clientDisplayName << " to the deleted list\n";
-            gDeletedCompositors.push_back(*it);
+            //gDeletedCompositors.push_back(*it);
             compositorInfoList->erase(it);
             if (gFocusedCompositor.name == clientDisplayName)
             {
@@ -1769,7 +1769,7 @@ namespace RdkShell
 
     bool CompositorController::update()
     {
-        gDeletedCompositors.clear();
+        //gDeletedCompositors.clear();
         resolveWaitingEasterEggs();
         RdkShell::Animator::instance()->animate();
         updateKeyRepeat();
