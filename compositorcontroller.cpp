@@ -1604,7 +1604,7 @@ namespace RdkShell
     {
         //first render deleted compositors to ensure there is no memory leak
         //mfnote: todo - come back and revisit this approach to prevent a memory leak
-
+        /*
         for (auto reverseIterator = gDeletedCompositors.rbegin(); reverseIterator != gDeletedCompositors.rend(); reverseIterator++)
         {
             bool needsHolePunch = false;
@@ -1614,8 +1614,7 @@ namespace RdkShell
             std::cout << "rendering deleted compositor " << compositorName << std::endl;
             reverseIterator->compositor->draw(needsHolePunch, rect);
         }
-        gDeletedCompositors.clear();
-
+        */
         for (auto reverseIterator = gCompositorList.rbegin(); reverseIterator != gCompositorList.rend(); reverseIterator++)
         {
             bool needsHolePunch = false;
@@ -1770,6 +1769,7 @@ namespace RdkShell
 
     bool CompositorController::update()
     {
+        gDeletedCompositors.clear();
         resolveWaitingEasterEggs();
         RdkShell::Animator::instance()->animate();
         updateKeyRepeat();
